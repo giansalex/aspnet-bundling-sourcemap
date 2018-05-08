@@ -1,7 +1,7 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
+using AspNetBundling;
 
-namespace AspNetBundling
+namespace AspNetBundle
 {
     public class BundleConfig
     {
@@ -11,8 +11,10 @@ namespace AspNetBundling
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/Scripts/app").Include(
+            bundles.Add(new ScriptWithSourceMapBundle("~/Scripts/app").Include(
                 "~/Scripts/app.js"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

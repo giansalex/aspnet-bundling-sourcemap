@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace AspNetBundling.Controllers
+namespace AspNetBundle.Controllers
 {
     public class HomeController : Controller
     {
