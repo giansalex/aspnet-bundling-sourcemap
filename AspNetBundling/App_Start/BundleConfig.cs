@@ -10,6 +10,9 @@ namespace AspNetBundling
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/app").Include(
+                "~/Scripts/app.js"));
         }
     }
 }
