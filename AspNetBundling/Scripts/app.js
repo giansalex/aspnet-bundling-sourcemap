@@ -1,14 +1,12 @@
-﻿StackTrace.get()
-    .then(console.log);
-
+﻿
 var app = {};
 
 app.Id = 21;
 app.action = action;
-throw 3;
 console.log(app.action());
 
 function action() {
+    a.length = 1;
     return 2 + 8;
 }
 
