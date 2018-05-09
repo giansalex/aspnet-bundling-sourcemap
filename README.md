@@ -20,6 +20,8 @@ In js error logging:
 
 window.onerror = function (msg, url, line, col, error) {
     var callback = function(stackframes) {
+        // proccess stackFrames:
+        // [{columnNumber: 5, fileName: "https://domain.com/Scripts/app.js", functionName:"action", lineNumber:9}]
         console.log(stackframes);
     };
     StackTrace.fromError(error).then(callback);
