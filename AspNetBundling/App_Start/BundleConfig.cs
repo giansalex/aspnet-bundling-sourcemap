@@ -15,6 +15,7 @@ namespace AspNetBundle
                 "~/Scripts/stacktrace.js"));
 
             bundles.Add(new ScriptWithSourceMapBundle("~/Scripts/app").Include(
+                "~/Scripts/log.js",
                 "~/Scripts/app.js"));
 
             //BundleTable.EnableOptimizations = true;
