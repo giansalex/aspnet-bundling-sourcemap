@@ -1850,7 +1850,7 @@ function getArg(aArgs, aName, aDefaultValue) {
 }
 exports.getArg = getArg;
 
-var urlRegexp = /^(?:([\w+\-.]+):)?\/\/(?:(\w+:\w+)@)?([\w.]*)(?::(\d+))?(\S*)$/;
+var urlRegexp = /^(?:([\w+\-.]+):)?\/\/(?:(\w+:\w+)@)?([\w.\-]*)(?::(\d+))?(\S*)$/;
 var dataUrlRegexp = /^data:.+\,.+$/;
 
 function urlParse(aUrl) {
