@@ -1,4 +1,37 @@
-﻿window.onerror = function (msg, url, line, col, error) {
+﻿function _filtered(stackframes, filter) {
+    if (typeof filter === 'function') {
+        return stackframes.filter(filter);
+    }
+    return stackframes;
+}
+
+function fromError(error) {
+    var opts = {
+        filter: function(stackframe) {
+            // Filter out stackframes for this library by default
+            return (stackframe.functionName || '').indexOf('StackTrace$$') === -1 &&
+                (stackframe.functionName || '').indexOf('ErrorStackParser$$') === -1 &&
+                (stackframe.functionName || '').indexOf('StackTraceGPS$$') === -1 &&
+                (stackframe.functionName || '').indexOf('StackGenerator$$') === -1;
+        },
+        sourceCache: {}
+    };
+    var gps = new StackTraceGPS(opts);
+    return new Promise(function(resolve) {
+        var stackframes = _filtered(ErrorStackParser.parse(error), opts.filter);
+        resolve(Promise.all(stackframes.map(function(sf) {
+            return new Promise(function(resolve) {
+                function resolveOriginal() {
+                    resolve(sf);
+                }
+
+                gps.pinpoint(sf).then(resolve, resolveOriginal)['catch'](resolveOriginal);
+            });
+        })));
+    }.bind(this));
+}
+
+window.onerror = function (msg, url, line, col, error) {
     // Browser compatibility
     // https://blog.sentry.io/2016/01/04/client-javascript-reporting-window-onerror.html
     // https://blog.bugsnag.com/js-stacktraces/
@@ -38,7 +71,7 @@
         console.log(stackframes);
 
     };
-    StackTrace.fromError(error).then(callback);
+    fromError(error).then(callback);
 
     return true;
 };

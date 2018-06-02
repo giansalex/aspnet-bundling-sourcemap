@@ -14,6 +14,11 @@ namespace AspNetBundle
             bundles.Add(new ScriptBundle("~/Scripts/stacktrace").Include(
                 "~/Scripts/stacktrace.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/stacktrace2").Include(
+                "~/Scripts/stackframe.js",
+                "~/Scripts/error-stack-parser.js",
+                "~/Scripts/stacktrace-gps.js"));
+
             bundles.Add(new ScriptWithSourceMapBundle("~/Scripts/app").Include(
                 "~/Scripts/log.js",
                 "~/Scripts/app.js"));

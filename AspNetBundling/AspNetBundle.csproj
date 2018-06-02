@@ -132,7 +132,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\error-stack-parser.js" />
     <Content Include="Scripts\log.js" />
+    <Content Include="Scripts\stackframe.js" />
+    <Content Include="Scripts\stacktrace-gps.js" />
     <Content Include="Scripts\stacktrace.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
